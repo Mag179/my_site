@@ -321,18 +321,18 @@ function App() {
 
         {/* LINKS */}
         <section className="sec" data-screen-label="Links">
-          <SectionHead title="れんらく先" sub="Links" />
+          <SectionHead title="連絡先" sub="Links" />
           <div className="links">
             <LinkCard
               label="GitHub"
-              value="@shinnosuke-m"
+              value="@Mag179"
               note="コードはこちらに"
               href="https://github.com/Mag179"
               external
             />
             <LinkCard
               label="X (Twitter)"
-              value="@shinnosuke_m"
+              value="@hey__miyashino"
               note="ふだんのつぶやき"
               href="https://x.com/hey__miyashino"
               external
