@@ -331,13 +331,6 @@ function App() {
               external
             />
             <LinkCard
-              label="X (Twitter)"
-              value="@hey__miyashino"
-              note="ふだんのつぶやき"
-              href="https://x.com/hey__miyashino"
-              external
-            />
-            <LinkCard
               label="お問い合わせ"
               value="shinnosuke@miyazaki.uk"
               note="お気軽にどうぞ"
