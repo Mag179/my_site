@@ -36,25 +36,6 @@ function fmtIshikawa(d) {
   }
 }
 
-function greeting(d) {
-  try {
-    const h = Number(
-      new Intl.DateTimeFormat("ja-JP", {
-        timeZone: "Asia/Ishikawa",
-        hour: "2-digit",
-        hour12: false,
-      }).format(d),
-    );
-    if (h < 5) return "おやすみなさい";
-    if (h < 11) return "おはようございます";
-    if (h < 17) return "こんにちは";
-    if (h < 21) return "こんばんは";
-    return "";
-  } catch {
-    return "こんにちは";
-  }
-}
-
 function Pill({ children }) {
   return <span className="pill">{children}</span>;
 }
@@ -68,10 +49,27 @@ function SectionHead({ title, sub }) {
   );
 }
 
-function LinkCard({ label, value, note, href, external }) {
+function LinkCard({ label, value, note, href, external, disabled = false }) {
+  const cardClassName = `link-card${disabled ? " is-disabled" : ""}`;
+
+  if (disabled) {
+    return (
+      <div className={cardClassName} aria-disabled="true">
+        <div className="link-card-top">
+          <span className="link-card-label">{label}</span>
+          <span className="link-card-arrow" aria-hidden="true">
+            →
+          </span>
+        </div>
+        <div className="link-card-value">{value}</div>
+        {note && <div className="link-card-note">{note}</div>}
+      </div>
+    );
+  }
+
   return (
     <a
-      className="link-card"
+      className={cardClassName}
       href={href}
       target={external ? "_blank" : undefined}
       rel="noreferrer"
@@ -197,10 +195,6 @@ function App() {
       <main className="col">
         {/* HERO */}
         <section className="hero" data-screen-label="Hero">
-          <div className="hero-greet">
-            <span className="hero-greet-dot" />
-            <span>{greeting(now)}、ようこそ！</span>
-          </div>
           <h1 className="hero-name">
             宮崎 <span className="hero-name-given">進之介</span>
             <span className="hero-name-en">Shinnosuke Miyazaki</span>
@@ -322,17 +316,6 @@ function App() {
               </svg>
             </div>
             <div className="empty-title">準備中です</div>
-            <div className="empty-sub">
-              ただいまケーススタディを執筆中です。
-            </div>
-            <a
-              className="empty-link"
-              href="https://github.com"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub を見る <span aria-hidden="true">→</span>
-            </a>
           </div>
         </section>
 
@@ -344,21 +327,21 @@ function App() {
               label="GitHub"
               value="@shinnosuke-m"
               note="コードはこちらに"
-              href="https://github.com"
+              href="https://github.com/Mag179"
               external
             />
             <LinkCard
               label="X (Twitter)"
               value="@shinnosuke_m"
               note="ふだんのつぶやき"
-              href="https://x.com"
+              href="https://x.com/hey__miyashino"
               external
             />
             <LinkCard
               label="お問い合わせ"
-              value="hello@example.dev"
+              value="shinnosuke@miyazaki.uk"
               note="お気軽にどうぞ"
-              href="mailto:hello@example.dev"
+              href="mailto:shinnosuke@miyazaki.uk"
             />
           </div>
         </section>
