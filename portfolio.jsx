@@ -210,7 +210,7 @@ function App() {
             <br />
             気持ちよく使えるプロダクトを、丁寧につくることが好きです。
             <br />
-            石川県を拠点に、国内外のチームとお仕事しています。
+            石川県を拠点に、国内のチームとお仕事しています。
           </p>
           <div className="hero-meta">
             <div className="meta-row">
